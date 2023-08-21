@@ -1,7 +1,13 @@
 import React from "react";
+import Header from "../../shared/components/Header";
 
 const AboutUs = () => {
-  return <div>AboutUs</div>;
+  return (
+    <>
+      <Header />
+      <div>About</div>
+    </>
+  );
 };
 
 export default AboutUs;

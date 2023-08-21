@@ -1,7 +1,13 @@
 import React from "react";
+import Header from "../../shared/components/Header";
 
 const Search = () => {
-  return <div>Search</div>;
+  return (
+    <>
+      <Header />
+      <div>Search</div>
+    </>
+  );
 };
 
 export default Search;
