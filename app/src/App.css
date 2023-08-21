@@ -2,3 +2,35 @@
   text-align: center;
 }
 
+#header{
+  background-color: cadetblue;
+  z-index: 10;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#navBar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  font: 30;
+  font-weight: bold;
+  color: darkred;
+
+  margin-top: 15px;
+}
+
+.siteName{
+  color: purple;
+  font-weight: bold;
+  font-size: 40px; 
+}
+
+#exitBlock{
+  display:flex;
+  flex-direction: column;
+  
+}
+

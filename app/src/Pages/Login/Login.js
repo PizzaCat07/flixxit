@@ -36,7 +36,7 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <Typography color={"green"} component="h1" variant="h1">
+          <Typography color={"purple"} component="h1" variant="h1">
             FLIXXIT
           </Typography>
           <Typography component="h1" variant="h5">
@@ -74,6 +74,9 @@ const Login = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={() => {
+                navigate("/dashboard");
+              }}
             >
               Sign In
             </Button>

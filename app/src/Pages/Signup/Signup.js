@@ -37,7 +37,7 @@ const Signup = () => {
             alignItems: "center",
           }}
         >
-          <Typography color={"green"} component="h1" variant="h1">
+          <Typography color={"purple"} component="h1" variant="h1">
             FLIXXIT
           </Typography>
           <Typography component="h1" variant="h5">
