@@ -8,12 +8,14 @@ import Search from "./Pages/Search/Search";
 import Subscription from "./Pages/Subscription/Subscription";
 import Title from "./Pages/Title/Title";
 import Watchlist from "./Pages/Watchlist/Watchlist";
+import Signup from "./Pages/Signup/Signup";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
