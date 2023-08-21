@@ -1,4 +1,9 @@
 import express from "express";
+import cors from "cors";
+import dotEnv from "dotenv";
+import mongo from "mongodb";
+
+dotEnv.config();
 
 const app = express();
 const PORT = 3001;
