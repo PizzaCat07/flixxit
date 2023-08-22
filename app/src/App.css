@@ -1,6 +1,6 @@
 html, body,#root, .app, #app>div {
   height: 100%;
-  background-color: whitesmoke;
+  background-color: darkslategray;
 }
 
 #header{

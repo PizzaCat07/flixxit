@@ -7,7 +7,6 @@ import {
   getTopTV,
 } from "../../shared/api/movieApi";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 
@@ -40,6 +39,7 @@ const Dashboard = () => {
         <div>
           <h2 className="category">Popular Movies</h2>
           <AliceCarousel
+            mouseTracking
             infinite
             responsive={responsive}
             controlsStrategy="alternate"
@@ -55,6 +55,7 @@ const Dashboard = () => {
         <div>
           <h2 className="category">Popular TV Shows</h2>
           <AliceCarousel
+            mouseTracking
             infinite
             responsive={responsive}
             controlsStrategy="alternate"
@@ -70,6 +71,7 @@ const Dashboard = () => {
         <div>
           <h2 className="category">Top Rated Movies</h2>
           <AliceCarousel
+            mouseTracking
             infinite
             responsive={responsive}
             controlsStrategy="alternate"
@@ -85,6 +87,7 @@ const Dashboard = () => {
         <div>
           <h2 className="category">Top Rated TV Shows</h2>
           <AliceCarousel
+            mouseTracking
             infinite
             responsive={responsive}
             controlsStrategy="alternate"
