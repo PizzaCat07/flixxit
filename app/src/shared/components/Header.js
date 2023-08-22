@@ -9,6 +9,13 @@ const Header = () => {
       <div id="navBar">
         <span
           onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          Browse{" "}
+        </span>
+        <span
+          onClick={() => {
             navigate("/search");
           }}
         >
