@@ -14,8 +14,8 @@ const getPopularMovie = async (setState) => {
     });
 };
 
-const getDiscoverMovie = async (setState) => {
-  await fetch("https://api.themoviedb.org/3/discover/movie", {
+const getPopularTV = async (setState) => {
+  await fetch("https://api.themoviedb.org/3/discover/tv", {
     headers: {
       Authorization: process.env.REACT_APP_API_TOKEN,
     },
@@ -28,4 +28,32 @@ const getDiscoverMovie = async (setState) => {
     });
 };
 
-export { getPopularMovie, getDiscoverMovie };
+const getTopMovie = async (setState) => {
+  await fetch("https://api.themoviedb.org/3/movie/top_rated", {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      //console.log(json.results);
+      const data = json.results;
+      setState(data);
+    });
+};
+
+const getTopTV = async (setState) => {
+  await fetch("https://api.themoviedb.org/3/tv/top_rated", {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      //console.log(json.results);
+      const data = json.results;
+      setState(data);
+    });
+};
+
+export { getPopularMovie, getPopularTV, getTopMovie, getTopTV };
