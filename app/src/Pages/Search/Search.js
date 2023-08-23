@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "../../shared/components/Header";
+import { TextField } from "@mui/material";
 
 const Search = () => {
   return (
     <>
       <Header />
-      <div>Search</div>
+      <div id="screenArea">
+        <TextField />
+      </div>
     </>
   );
 };

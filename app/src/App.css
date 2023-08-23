@@ -76,3 +76,8 @@ img{
 .category{
   color: chocolate;
 }
+
+#screenArea{
+  margin-left: 20%;
+  margin-right: 20%;
+}

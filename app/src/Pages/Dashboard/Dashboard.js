@@ -34,8 +34,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="caroselDivide">
-        <Header />
+      <Header />
+      <div id="screenArea">
         <div>
           <h2 className="category">Popular Movies</h2>
           <AliceCarousel
