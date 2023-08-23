@@ -1,23 +1,20 @@
 import React from "react";
 import Header from "../../shared/components/Header";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import StarIcon from "@mui/icons-material/StarBorder";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
+import { useNavigate } from "react-router-dom";
 
 const Subscription = () => {
+  const navigate = useNavigate();
+
   const tiers = [
     {
       title: "Monthly",
@@ -25,6 +22,7 @@ const Subscription = () => {
       description: ["4K streaming", "Help center access", "Email support"],
       buttonText: "Sign up !",
       buttonVariant: "outlined",
+      param: "mo",
     },
     {
       title: "Yearly",
@@ -37,6 +35,7 @@ const Subscription = () => {
       ],
       buttonText: "Sign Up !",
       buttonVariant: "contained",
+      param: "yr",
     },
   ];
 
@@ -125,7 +124,11 @@ const Subscription = () => {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
+                  <Button
+                    fullWidth
+                    variant={tier.buttonVariant}
+                    onClick={() => navigate(`/checkout/${tier.param}`)}
+                  >
                     {tier.buttonText}
                   </Button>
                 </CardActions>

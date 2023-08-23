@@ -9,6 +9,7 @@ import Subscription from "./Pages/Subscription/Subscription";
 import Title from "./Pages/Title/Title";
 import Watchlist from "./Pages/Watchlist/Watchlist";
 import Signup from "./Pages/Signup/Signup";
+import Checkout from "./Pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/title" element={<Title />} />
         <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/checkout/:id" element={<Checkout />} />
         <Route path="/" element={<Navigate to={"/login"} />} />
       </Routes>
     </div>
