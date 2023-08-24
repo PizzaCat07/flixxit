@@ -22,7 +22,6 @@ const getPopularTV = async (setState) => {
   })
     .then((resp) => resp.json())
     .then((json) => {
-      //console.log(json.results);
       const data = json.results;
       setState(data);
     });

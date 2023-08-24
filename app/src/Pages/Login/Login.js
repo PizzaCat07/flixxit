@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { userLogin } from "../../shared/api/userApi";
 
 const defaultTheme = createTheme();
 
@@ -27,14 +26,27 @@ const Login = () => {
     setPassword(data.get("password"));
   };
 
-  console.log(email, password);
-
   const login = () => {
     setIsLoggingIn(true);
 
-    userLogin("/login", { email: email, password: password }).then((x) => {
-      console.log(x);
-    });
+    const url = process.env.REACT_APP_BACKEND_URL + "/login";
+    console.log();
+
+    fetch(url, {
+      headers: {
+        email: email,
+        password: password,
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status === true) {
+          navigate("/dashboard");
+        } else {
+          alert("Login failed!");
+        }
+      });
   };
 
   return (
@@ -87,7 +99,9 @@ const Login = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => {}}
+              onClick={() => {
+                login();
+              }}
             >
               Sign In
             </Button>

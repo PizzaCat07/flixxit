@@ -3,11 +3,11 @@ export function getBackendUrl() {
 }
 
 export function userLogin(url, customHeaders) {
+  console.log(getBackendUrl() + url);
   return fetch(getBackendUrl() + url, {
     headers: {
       customHeaders,
       //token: localStorage.getItem("token"),
     },
-    method: "GET",
-  }).then((x) => x.json);
+  }).then((x) => x.json());
 }
