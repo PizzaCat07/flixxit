@@ -5,6 +5,7 @@ import {
   insertDocument,
 } from "../../utilities/database.js";
 import { ObjectId } from "mongodb";
+import { header } from "express-validator";
 
 const userRouter = Router();
 
@@ -14,6 +15,29 @@ userRouter.get("/", (req, res) => {
     res.send(x);
   });
 });
+
+userRouter.get(
+  "/login",
+  header("email").notEmpty(),
+  header("password").notEmpty(),
+  async (req, res) => {
+    let email = req.headers.email;
+    let password = req.headers.password;
+
+    getFilteredDocuments("users", { email, password }).then((users) => {
+      if (users.length > 0) {
+        res.json({
+          status: true,
+          users,
+        });
+      } else {
+        res.json({
+          status: false,
+        });
+      }
+    });
+  }
+);
 
 //create new account for signup
 userRouter.post("/signup", (req, res) => {

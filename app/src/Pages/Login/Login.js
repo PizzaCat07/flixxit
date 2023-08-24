@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -9,18 +9,31 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { userLogin } from "../../shared/api/userApi";
 
 const defaultTheme = createTheme();
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogggingIn, setIsLoggingIn] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    setEmail(data.get("email"));
+    setPassword(data.get("password"));
+  };
+
+  console.log(email, password);
+
+  const login = () => {
+    setIsLoggingIn(true);
+
+    userLogin("/login", { email: email, password: password }).then((x) => {
+      console.log(x);
     });
   };
 
@@ -74,9 +87,7 @@ const Login = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => {
-                navigate("/dashboard");
-              }}
+              onClick={() => {}}
             >
               Sign In
             </Button>
