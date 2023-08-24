@@ -45,6 +45,7 @@ const Header = () => {
         <div id="exitBlock">
           <span
             onClick={() => {
+              localStorage.clear();
               navigate("/login");
             }}
           >

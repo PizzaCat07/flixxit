@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import { Checkbox } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const defaultTheme = createTheme();
 
@@ -18,7 +19,23 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isRemeberMe, setIsRememberMe] = useState(false);
 
-  console.log(isRemeberMe);
+  useEffect(() => {
+    if (localStorage.getItem("isRemeberMe") == "true") {
+      let userToken = localStorage.getItem("userToken");
+      if (userToken) {
+        let decoded = jwtDecode(userToken);
+        let expire = decoded.exp * 1000;
+        if (new Date().getTime() < expire) {
+          navigate("/dashboard");
+        } else {
+          localStorage.clear();
+        }
+      } else {
+        localStorage.clear();
+      }
+    }
+  }, []);
+
   const navigate = useNavigate();
 
   const login = () => {
@@ -33,10 +50,9 @@ const Login = () => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         if (data.status === true) {
-          localStorage.setItem("token", data.token);
           if (isRemeberMe == true) {
+            localStorage.setItem("userToken", data.token);
             localStorage.setItem("isRemeberMe", isRemeberMe);
           }
           navigate("/dashboard");

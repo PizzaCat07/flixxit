@@ -6,6 +6,7 @@ import {
 } from "../../utilities/database.js";
 import { ObjectId } from "mongodb";
 import { header } from "express-validator";
+import jwt from "jsonwebtoken";
 
 const userRouter = Router();
 
@@ -26,13 +27,22 @@ userRouter.get(
 
     getFilteredDocuments("users", { email, password }).then((users) => {
       if (users.length > 0) {
+        let token = jwt.sign(
+          {
+            email,
+            username: users[0].username,
+          },
+          process.env.SECRET_KEY,
+          { expiresIn: process.env.TOKEN_EXPIRE }
+        );
         res.json({
           status: true,
-          users,
+          token,
         });
       } else {
         res.json({
           status: false,
+          token: "",
         });
       }
     });
