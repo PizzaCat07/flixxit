@@ -34,7 +34,6 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header />
       <div id="screenArea">
         <div>
           <h2 className="category">Popular Movies</h2>

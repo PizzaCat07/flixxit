@@ -4,7 +4,6 @@ import Header from "../../shared/components/Header";
 const Title = () => {
   return (
     <>
-      <Header />
       <div>Title</div>
     </>
   );

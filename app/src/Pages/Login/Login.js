@@ -51,8 +51,8 @@ const Login = () => {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.status === true) {
+          localStorage.setItem("userToken", data.token);
           if (isRemeberMe == true) {
-            localStorage.setItem("userToken", data.token);
             localStorage.setItem("isRemeberMe", isRemeberMe);
           }
           navigate("/dashboard");

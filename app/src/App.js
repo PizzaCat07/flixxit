@@ -10,6 +10,7 @@ import Title from "./Pages/Title/Title";
 import Watchlist from "./Pages/Watchlist/Watchlist";
 import Signup from "./Pages/Signup/Signup";
 import Checkout from "./Pages/Checkout/Checkout";
+import ProtectedRoute from "./shared/components/ProtectedRoute";
 
 function App() {
   return (
@@ -17,14 +18,70 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/subscription" element={<Subscription />} />
-        <Route path="/title" element={<Title />} />
-        <Route path="/watchlist" element={<Watchlist />} />
-        <Route path="/checkout/:id" element={<Checkout />} />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <AboutUs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <Search />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/subscription"
+          element={
+            <ProtectedRoute>
+              <Subscription />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/title"
+          element={
+            <ProtectedRoute>
+              <Title />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/watchlist"
+          element={
+            <ProtectedRoute>
+              <Watchlist />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/checkout/:id"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/" element={<Navigate to={"/login"} />} />
       </Routes>
     </div>

@@ -5,7 +5,6 @@ import { TextField } from "@mui/material";
 const Search = () => {
   return (
     <>
-      <Header />
       <div id="screenArea">
         <TextField />
       </div>

@@ -39,7 +39,6 @@ const Checkout = () => {
   return (
     <>
       <div>
-        <Header />
         <Container component="main">
           <Paper
             variant="outlined"

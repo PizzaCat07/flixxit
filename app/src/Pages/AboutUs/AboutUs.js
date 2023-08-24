@@ -4,7 +4,6 @@ import Header from "../../shared/components/Header";
 const AboutUs = () => {
   return (
     <>
-      <Header />
       <div>About</div>
     </>
   );

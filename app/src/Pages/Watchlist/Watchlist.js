@@ -4,7 +4,6 @@ import Header from "../../shared/components/Header";
 const Watchlist = () => {
   return (
     <>
-      <Header />
       <div>Watchlist</div>
     </>
   );

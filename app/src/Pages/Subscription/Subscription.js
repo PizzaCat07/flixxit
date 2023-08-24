@@ -41,7 +41,6 @@ const Subscription = () => {
 
   return (
     <>
-      <Header />
       <Container
         disableGutters
         maxWidth="sm"
