@@ -4,6 +4,7 @@ import dotEnv from "dotenv";
 import mongo from "mongodb";
 import { getAllDocuments } from "./utilities/database.js";
 import userRouter from "./apis/users/users.js";
+import watchListRouter from "./apis/watchlist/watchlist.js";
 
 dotEnv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", userRouter);
+app.use("/", watchListRouter);
 
 app.listen(PORT, (error) => {
   if (!error)
