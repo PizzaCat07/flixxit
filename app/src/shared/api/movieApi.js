@@ -49,10 +49,56 @@ const getTopTV = async (setState) => {
   })
     .then((resp) => resp.json())
     .then((json) => {
-      //console.log(json.results);
       const data = json.results;
       setState(data);
     });
 };
 
-export { getPopularMovie, getPopularTV, getTopMovie, getTopTV };
+const searchMovie = async (query, setState) => {
+  await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      const data = json.results;
+      setState(data);
+    });
+};
+
+const searchTv = async (query, setState) => {
+  await fetch(`https://api.themoviedb.org/3/search/tv?query=${query}`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      const data = json.results;
+      setState(data);
+    });
+};
+
+const searchPerson = async (query, setState) => {
+  await fetch(`https://api.themoviedb.org/3/search/person?query=${query}`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      const data = json.results;
+      setState(data);
+    });
+};
+
+export {
+  getPopularMovie,
+  getPopularTV,
+  getTopMovie,
+  getTopTV,
+  searchMovie,
+  searchPerson,
+  searchTv,
+};
