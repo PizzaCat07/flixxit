@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const Review = () => {
   const param = useParams();
-  console.log(param.id);
+
   let products = [];
 
   if (param.id === "mo") {

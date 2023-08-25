@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 
-const Carousel = ({ title, data }) => {
+const Carousel = ({ title, type, data }) => {
   //set baseurl for image size
   const imageBaseUrl = "https://image.tmdb.org/t/p/w92";
 
@@ -24,7 +24,7 @@ const Carousel = ({ title, data }) => {
           controlsStrategy="alternate"
           items={data.map((x) => {
             return (
-              <div className="item" onClick={() => console.log(x.id)}>
+              <div className="item" onClick={() => console.log(type, x.id)}>
                 <img src={imageBaseUrl + x.poster_path} />
               </div>
             );

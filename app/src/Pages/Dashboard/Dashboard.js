@@ -25,16 +25,20 @@ const Dashboard = () => {
     <>
       <div id="screenArea">
         <div>
-          <Carousel title={"Popular Movies"} data={popularMovie} />
+          <Carousel
+            title={"Popular Movies"}
+            data={popularMovie}
+            type={"movie"}
+          />
         </div>
         <div>
-          <Carousel title={"Popular TV Shows"} data={popularTV} />
+          <Carousel title={"Popular TV Shows"} data={popularTV} type={"tv"} />
         </div>
         <div>
-          <Carousel title={"Top Rated Movies"} data={topMovie} />
+          <Carousel title={"Top Rated Movies"} data={topMovie} type={"movie"} />
         </div>
         <div>
-          <Carousel title={"Top Rated TV Shows"} data={topTV} />
+          <Carousel title={"Top Rated TV Shows"} data={topTV} type={"tv"} />
         </div>
       </div>
     </>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../shared/components/Header";
 
-const Title = () => {
+const Title = ({ id, type }) => {
+  useEffect(() => {}, [id]);
+
   return (
     <>
       <div>Title</div>
