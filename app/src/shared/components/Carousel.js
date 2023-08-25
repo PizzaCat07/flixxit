@@ -31,7 +31,10 @@ const Carousel = ({ title, type, data }) => {
                 className="item"
                 onClick={() => navigate(`/title/${type}/${x.id}`)}
               >
-                <img src={imageBaseUrl + x.poster_path} />
+                <img
+                  src={imageBaseUrl + x.poster_path}
+                  className="carouselImg"
+                />
               </div>
             );
           })}

@@ -35,30 +35,16 @@ html, body,#root, .app, #app>div {
   flex-direction: column;
 }
 
-.caroselImage{
- height: 5%;
- width: 80%;
-}
-
-.page{
-  height: 100%;
-  width: 100%;
-}
-
-.caroselDivide{
-}
-
 .section{
   height: 100px;
   background-color: yellow;
 }
 
-img{
+.carouselImg{
   height: auto; 
   width: auto; 
   max-width: 100px; 
   max-height: 100px;
-
 }
 
 .netslider {
@@ -80,8 +66,20 @@ img{
 #screenArea{
   margin-left: 20%;
   margin-right: 20%;
+
 }
 
 .searchBar{
   width: 90%;
 }
+
+.detailContainer{
+  padding-top: 80px;
+}
+
+.posterImg{
+  height: auto; 
+  width: auto; 
+ 
+}
+

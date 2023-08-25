@@ -93,6 +93,30 @@ const searchPerson = async (query, setState) => {
     });
 };
 
+const getMovieDetails = async (id, setState) => {
+  await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      setState(json);
+    });
+};
+
+const getTvDetails = async (id, setState) => {
+  await fetch(`https://api.themoviedb.org/3/tv/${id}`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      setState(json);
+    });
+};
+
 export {
   getPopularMovie,
   getPopularTV,
@@ -101,4 +125,6 @@ export {
   searchMovie,
   searchPerson,
   searchTv,
+  getMovieDetails,
+  getTvDetails,
 };
