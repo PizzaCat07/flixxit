@@ -45,10 +45,14 @@ const Search = () => {
           />
         </div>
         <div id="movieResults">
-          {movie.length > 0 ? <Carousel title={"Movies"} data={movie} /> : null}
+          {movie.length > 0 ? (
+            <Carousel title={"Movies"} data={movie} type={"movie"} />
+          ) : null}
         </div>
         <div id="tvResults">
-          {tv.length > 0 ? <Carousel title={"TV"} data={tv} /> : null}
+          {tv.length > 0 ? (
+            <Carousel title={"TV"} data={tv} type={"tv"} />
+          ) : null}
         </div>
       </div>
     </>
