@@ -52,6 +52,7 @@ const Login = () => {
       .then((data) => {
         if (data.status === true) {
           localStorage.setItem("userToken", data.token);
+          localStorage.setItem("email", email);
           if (isRemeberMe == true) {
             localStorage.setItem("isRemeberMe", isRemeberMe);
           }
