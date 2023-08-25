@@ -51,7 +51,8 @@ userRouter.get(
 
 //create new account for signup
 userRouter.post("/signup", (req, res) => {
-  let { username, password, email } = req.body;
+  let { username, email, password } = req.body;
+  console.log(req.body);
 
   insertDocument("users", { username, password, email }).then((x) => {
     res.send({
