@@ -27,9 +27,9 @@ const Signup = () => {
     console.log(url);
     fetch(url, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     }).then((x) => {
-      x.json();
       //navigate("/login");
     });
   };
