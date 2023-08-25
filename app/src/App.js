@@ -59,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/title"
+          path="/title/:type/:id"
           element={
             <ProtectedRoute>
               <Title />

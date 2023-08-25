@@ -1,12 +1,20 @@
 import React, { useEffect } from "react";
 import Header from "../../shared/components/Header";
+import { Grid } from "@mui/material";
+import { useParams } from "react-router-dom";
 
-const Title = ({ id, type }) => {
+const Title = () => {
+  const param = useParams();
+  const type = param.type;
+  const id = param.id;
+
   useEffect(() => {}, [id]);
 
   return (
     <>
-      <div>Title</div>
+      <div id="screenArea">
+        <Grid container spacing={8}></Grid>
+      </div>
     </>
   );
 };
