@@ -6,6 +6,7 @@ import {
   getTopMovie,
   getTopTV,
 } from "../../shared/api/movieApi";
+import Carousel from "../../shared/components/Carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
@@ -36,68 +37,16 @@ const Dashboard = () => {
     <>
       <div id="screenArea">
         <div>
-          <h2 className="category">Popular Movies</h2>
-          <AliceCarousel
-            mouseTracking
-            infinite
-            responsive={responsive}
-            controlsStrategy="alternate"
-            items={popularMovie.map((x) => {
-              return (
-                <div className="item" onClick={() => console.log(x.id)}>
-                  <img src={imageBaseUrl + x.poster_path} />
-                </div>
-              );
-            })}
-          />
+          <Carousel title={"Popular Movies"} data={popularMovie} />
         </div>
         <div>
-          <h2 className="category">Popular TV Shows</h2>
-          <AliceCarousel
-            mouseTracking
-            infinite
-            responsive={responsive}
-            controlsStrategy="alternate"
-            items={popularTV.map((x) => {
-              return (
-                <div className="item">
-                  <img src={imageBaseUrl + x.poster_path} />
-                </div>
-              );
-            })}
-          />
+          <Carousel title={"Popular TV Shows"} data={popularTV} />
         </div>
         <div>
-          <h2 className="category">Top Rated Movies</h2>
-          <AliceCarousel
-            mouseTracking
-            infinite
-            responsive={responsive}
-            controlsStrategy="alternate"
-            items={topMovie.map((x) => {
-              return (
-                <div className="item" onClick={() => console.log(x.id)}>
-                  <img src={imageBaseUrl + x.poster_path} />
-                </div>
-              );
-            })}
-          />
+          <Carousel title={"Top Rated Movies"} data={topMovie} />
         </div>
         <div>
-          <h2 className="category">Top Rated TV Shows</h2>
-          <AliceCarousel
-            mouseTracking
-            infinite
-            responsive={responsive}
-            controlsStrategy="alternate"
-            items={topTV.map((x) => {
-              return (
-                <div className="item" onClick={() => console.log(x.id)}>
-                  <img src={imageBaseUrl + x.poster_path} />
-                </div>
-              );
-            })}
-          />
+          <Carousel title={"Top Rated TV Shows"} data={topTV} />
         </div>
       </div>
     </>

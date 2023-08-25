@@ -3,23 +3,12 @@ import Header from "../../shared/components/Header";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { searchMovie, searchPerson, searchTv } from "../../shared/api/movieApi";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "react-alice-carousel/lib/alice-carousel.css";
-import AliceCarousel from "react-alice-carousel";
+import Carousel from "../../shared/components/Carousel";
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [movie, setMovie] = useState([]);
   const [tv, setTv] = useState([]);
-
-  //set baseurl for image size
-  const imageBaseUrl = "https://image.tmdb.org/t/p/w92";
-
-  const responsive = {
-    0: { items: 1 },
-    568: { items: 8 },
-    1024: { items: 15 },
-  };
 
   const searchHandler = async () => {
     await searchMovie(search, setMovie);
@@ -56,36 +45,10 @@ const Search = () => {
           />
         </div>
         <div id="movieResults">
-          <h2 className="category">Movies</h2>
-          <AliceCarousel
-            mouseTracking
-            infinite
-            responsive={responsive}
-            controlsStrategy="alternate"
-            items={movie.map((x) => {
-              return (
-                <div className="item" onClick={() => console.log(x.id)}>
-                  <img src={imageBaseUrl + x.poster_path} />
-                </div>
-              );
-            })}
-          />
+          <Carousel title={"Movies"} data={movie} />
         </div>
         <div id="tvResults">
-          <h2 className="category">TV</h2>
-          <AliceCarousel
-            mouseTracking
-            infinite
-            responsive={responsive}
-            controlsStrategy="alternate"
-            items={tv.map((x) => {
-              return (
-                <div className="item" onClick={() => console.log(x.id)}>
-                  <img src={imageBaseUrl + x.poster_path} />
-                </div>
-              );
-            })}
-          />
+          <Carousel title={"TV"} data={tv} />
         </div>
       </div>
     </>
