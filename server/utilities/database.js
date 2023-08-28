@@ -67,3 +67,13 @@ export function updateDocumentWithId(collectionName, id, newValues) {
         .updateOne({ _id: new ObjectId(id) }, { $set: newValues });
     });
 }
+
+export function documentExists(collectionName, query) {
+  return getClient()
+    .connect()
+    .then((connection) => {
+      const db = connection.db(process.env.DEFAULT_DATABASE);
+      console.log(query);
+      return db.collection(collectionName).countDocuments(query);
+    });
+}

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  documentExists,
   getAllDocuments,
   getFilteredDocuments,
   insertDocument,
@@ -26,11 +27,26 @@ watchListRouter.get("/watchlist", (req, res) => {
 
 watchListRouter.post("/watchList", (req, res) => {
   let details = req.body;
+  const id = details.details.id;
+  const email = details.email;
+  console.log(id, email);
 
-  insertDocument("watchList", { details }).then((x) => {
-    res.send({
-      success: true,
-    });
+  documentExists("watchList", {
+    $and: [{ "details.details.id": id }, { "details.email": email }],
+  }).then((x) => {
+    if (x > 0) {
+      console.log("exists");
+      res.send({
+        success: false,
+      });
+    } else {
+      console.log("added");
+      insertDocument("watchList", { details }).then((x) => {
+        res.send({
+          success: true,
+        });
+      });
+    }
   });
 });
 
