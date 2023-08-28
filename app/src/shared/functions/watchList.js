@@ -6,7 +6,10 @@ const addToWatchList = (details, type) => {
 
   fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      token: localStorage.getItem("userToken"),
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(bodyObj),
   })
     .then((resp) => resp.json())
@@ -22,7 +25,7 @@ const getWatchList = (setState) => {
 
   fetch(url, {
     method: "GET",
-    headers: { email: email },
+    headers: { email: email, token: localStorage.getItem("userToken") },
   })
     .then((resp) => resp.json())
     .then((data) => {
@@ -31,11 +34,9 @@ const getWatchList = (setState) => {
 };
 
 const removeWatchList = (_id, setState) => {
-  console.log(_id);
-
   fetch(url, {
     method: "DELETE",
-    headers: { _id },
+    headers: { _id, token: localStorage.getItem("userToken") },
   })
     .then((resp) => resp.json())
     .then((data) => {

@@ -5,7 +5,7 @@ export function authenticate(req, res, next) {
   let token = req.headers.token;
   try {
     let decoded = jwt.verify(token, process.env.SECRET_KEY);
-    req.headers["username"] = decoded.username;
+    req.headers["email"] = decoded.email;
     next();
   } catch (e) {
     res.json({
