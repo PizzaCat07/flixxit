@@ -29,7 +29,7 @@ const MovieDetails = ({ details }) => {
       </ul>
       <Button
         onClick={() => {
-          addToWatchList(details);
+          addToWatchList(details, "movie");
         }}
       >
         Add to watchlist

@@ -26,7 +26,6 @@ watchListRouter.get("/watchlist", (req, res) => {
 
 watchListRouter.post("/watchList", (req, res) => {
   let details = req.body;
-  console.log(details.email);
 
   insertDocument("watchList", { details }).then((x) => {
     res.send({

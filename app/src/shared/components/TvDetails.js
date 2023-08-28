@@ -29,7 +29,9 @@ const TvDetails = ({ details }) => {
           return <li>{x.name}</li>;
         })}
       </ul>
-      <Button onClick={() => addToWatchList(details)}>Add to watchlist</Button>
+      <Button onClick={() => addToWatchList(details, "tv")}>
+        Add to watchlist
+      </Button>
     </>
   );
 };

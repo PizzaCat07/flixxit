@@ -1,8 +1,8 @@
 const url = process.env.REACT_APP_BACKEND_URL + "/watchlist";
 
-const addToWatchList = (details) => {
+const addToWatchList = (details, type) => {
   const email = localStorage.getItem("email");
-  let bodyObj = { email, details };
+  let bodyObj = { email, type, details };
 
   fetch(url, {
     method: "POST",

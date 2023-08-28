@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Header from "../../shared/components/Header";
 import { getWatchList } from "../../shared/functions/watchList";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Watchlist = () => {
   const [watchlist, setWatchlist] = useState();
+  const navigate = useNavigate();
 
   const imageBaseUrl = "https://image.tmdb.org/t/p/w92";
 
@@ -20,7 +22,13 @@ const Watchlist = () => {
           <Grid container spacing={10}>
             {watchlist.x.map((x) => {
               return (
-                <Grid item xs={1}>
+                <Grid
+                  item
+                  xs={1}
+                  onClick={() =>
+                    navigate(`/title/${x.details.type}/${x.details.details.id}`)
+                  }
+                >
                   <img src={imageBaseUrl + x.details.details.poster_path} />
                 </Grid>
               );
