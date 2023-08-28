@@ -8,7 +8,13 @@ const addToWatchList = (details, type) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bodyObj),
-  });
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      if (!data.success) {
+        alert("This is already in the Watchlist");
+      }
+    });
 };
 
 const getWatchList = (setState) => {
