@@ -1,5 +1,6 @@
+const url = process.env.REACT_APP_BACKEND_URL + "/watchlist";
+
 const addToWatchList = (details) => {
-  const url = process.env.REACT_APP_BACKEND_URL + "/watchlist";
   const email = localStorage.getItem("email");
   let bodyObj = { email, details };
 
@@ -10,4 +11,17 @@ const addToWatchList = (details) => {
   });
 };
 
-export { addToWatchList };
+const getWatchList = (setState) => {
+  const email = localStorage.getItem("email");
+
+  fetch(url, {
+    method: "GET",
+    headers: { email: email },
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      setState(data);
+    });
+};
+
+export { addToWatchList, getWatchList };

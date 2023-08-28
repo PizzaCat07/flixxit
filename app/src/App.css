@@ -77,6 +77,10 @@ html, body,#root, .app, #app>div {
   padding-top: 80px;
 }
 
+.watchlistContainer{
+  padding-top: 10px;
+}
+
 .posterImg{
   height: auto; 
   width: auto; 
