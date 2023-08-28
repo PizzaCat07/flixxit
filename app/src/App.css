@@ -78,12 +78,24 @@ html, body,#root, .app, #app>div {
 }
 
 .watchlistContainer{
-  padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 700px;
+    align-items: flex-start;
+}
+
+.watchlistObj{
+  width : 200px;
+  height: 200px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .posterImg{
   height: auto; 
-  width: auto; 
- 
+  width: auto;  
 }
+
+
 

@@ -50,4 +50,6 @@ watchListRouter.post("/watchList", (req, res) => {
   });
 });
 
+watchListRouter.delete("/watchList", (req, res) => {});
+
 export default watchListRouter;

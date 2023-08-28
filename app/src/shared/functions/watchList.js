@@ -30,4 +30,17 @@ const getWatchList = (setState) => {
     });
 };
 
-export { addToWatchList, getWatchList };
+const removeWatchList = (_id, setState) => {
+  console.log(_id);
+
+  fetch(url, {
+    method: "DELETE",
+    headers: { _id },
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      setState(data);
+    });
+};
+
+export { addToWatchList, getWatchList, removeWatchList };

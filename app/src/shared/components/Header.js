@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const email = localStorage.getItem("email");
   return (
     <div id="header">
       <span className="siteName">FLIXXIT </span>
@@ -49,7 +50,7 @@ const Header = () => {
               navigate("/login");
             }}
           >
-            Log Out{" "}
+            Log Out({email})
           </span>
           <span
             onClick={() => {
