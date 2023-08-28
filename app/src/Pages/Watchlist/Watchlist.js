@@ -9,13 +9,15 @@ import { useNavigate } from "react-router-dom";
 
 const Watchlist = () => {
   const [watchlist, setWatchlist] = useState();
+  const [reload, setReload] = useState(false);
   const navigate = useNavigate();
 
   const imageBaseUrl = "https://image.tmdb.org/t/p/w342";
 
   useEffect(() => {
+    setReload(false);
     getWatchList(setWatchlist);
-  }, []);
+  }, [reload]);
 
   return (
     <>
@@ -24,7 +26,7 @@ const Watchlist = () => {
           <>
             <h2 className="category">Watch List</h2>
             <div className="watchlistContainer">
-              {watchlist.x.map((x) => {
+              {watchlist.map((x) => {
                 return (
                   <div className="watchlistObj">
                     <img
@@ -37,7 +39,7 @@ const Watchlist = () => {
                     />
                     <Button
                       onClick={() => {
-                        removeWatchList(x._id, setWatchlist);
+                        removeWatchList(x._id, setReload);
                       }}
                     >
                       Remove

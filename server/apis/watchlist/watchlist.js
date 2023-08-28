@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  deleteDocument,
   documentExists,
   getAllDocuments,
   getFilteredDocuments,
@@ -19,9 +20,7 @@ watchListRouter.get("/watchlist", (req, res) => {
   let query = { "details.email": email };
 
   getFilteredDocuments("watchList", query).then((x) => {
-    res.send({
-      x,
-    });
+    res.send(x);
   });
 });
 
@@ -50,6 +49,13 @@ watchListRouter.post("/watchList", (req, res) => {
   });
 });
 
-watchListRouter.delete("/watchList", (req, res) => {});
+watchListRouter.delete("/watchList", (req, res) => {
+  const _id = req.headers._id;
+  console.log(_id);
+
+  deleteDocument("watchList", _id).then((x) => {
+    res.send(x);
+  });
+});
 
 export default watchListRouter;

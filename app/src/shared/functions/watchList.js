@@ -39,7 +39,7 @@ const removeWatchList = (_id, setState) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      setState(data);
+      setState(true);
     });
 };
 
