@@ -4,21 +4,29 @@ import {
   getFilteredDocuments,
   insertDocument,
 } from "../../utilities/database.js";
-import { ObjectId } from "mongodb";
+import { ObjectId, MongoClient } from "mongodb";
 import { header } from "express-validator";
 import jwt from "jsonwebtoken";
 
 const watchListRouter = Router();
+function getClient() {
+  return new MongoClient(process.env.CONNECTION_STRING);
+}
 
 watchListRouter.get("/watchlist", (req, res) => {
-  getAllDocuments("watchList").then((x) => {
-    res.json({ x });
+  const email = req.headers.email;
+  let query = { "details.email": email };
+
+  getFilteredDocuments("watchList", query).then((x) => {
+    res.send({
+      x,
+    });
   });
 });
 
 watchListRouter.post("/watchList", (req, res) => {
   let details = req.body;
-  console.log(details);
+  console.log(details.email);
 
   insertDocument("watchList", { details }).then((x) => {
     res.send({
