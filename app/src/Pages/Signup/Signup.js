@@ -21,16 +21,15 @@ const Signup = () => {
 
   const signUp = () => {
     let data = { username, email, password };
-    console.log(data);
-    console.log(JSON.stringify(data));
+
     const url = process.env.REACT_APP_BACKEND_URL + "/signup";
-    console.log(url);
+
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     }).then((x) => {
-      //navigate("/login");
+      navigate("/login");
     });
   };
 

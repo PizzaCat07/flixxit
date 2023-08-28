@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { addToWatchList } from "../functions/watchList";
 
 const TvDetails = ({ details }) => {
   return (
@@ -28,7 +29,7 @@ const TvDetails = ({ details }) => {
           return <li>{x.name}</li>;
         })}
       </ul>
-      <Button>Add to watchlist</Button>
+      <Button onClick={() => addToWatchList(details)}>Add to watchlist</Button>
     </>
   );
 };

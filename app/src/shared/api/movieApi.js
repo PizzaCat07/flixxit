@@ -1,5 +1,3 @@
-import React from "react";
-
 const getPopularMovie = async (setState) => {
   await fetch("https://api.themoviedb.org/3/movie/popular", {
     headers: {
