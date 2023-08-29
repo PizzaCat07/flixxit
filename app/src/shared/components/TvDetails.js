@@ -1,6 +1,10 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { addToWatchList } from "../functions/watchList";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 const TvDetails = ({ details }) => {
   return (
@@ -8,7 +12,7 @@ const TvDetails = ({ details }) => {
       <h2>{details.original_name}</h2>
       <span>First aired: {details.first_air_date}</span>
       <br />
-      <span>{details.status}</span>
+      <span>Current Status: {details.status}</span>
       <br />
       <span>Number of Seasons: {details.number_of_seasons}</span>
       <br />
@@ -29,9 +33,21 @@ const TvDetails = ({ details }) => {
           return <li>{x.name}</li>;
         })}
       </ul>
-      <Button onClick={() => addToWatchList(details, "tv")}>
-        Add to watchlist
-      </Button>
+      <div className="interactContainer">
+        <div>
+          <Button onClick={() => addToWatchList(details, "tv")}>
+            Add to watchlist
+          </Button>
+        </div>
+        <div className="ratingContainer">
+          <div className="thumbContainer">
+            <ThumbUpOffAltIcon />
+          </div>
+          <div className="thumbContainer">
+            <ThumbDownOffAltIcon />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

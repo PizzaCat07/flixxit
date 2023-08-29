@@ -97,5 +97,22 @@ html, body,#root, .app, #app>div {
   width: auto;  
 }
 
+.ratingContainer{
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  justify-content: center;
+ 
+}
+
+.interactContainer{
+  display: flex;
+}
+
+.thumbContainer{
+  padding-top: 4px;
+  padding-inline: 5px;
+}
+
 
 
