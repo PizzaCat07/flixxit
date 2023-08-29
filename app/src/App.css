@@ -116,5 +116,8 @@ html, body,#root, .app, #app>div {
   justify-content: center;
 }
 
+.countContainer{
+  padding-left:8px;
+}
 
 

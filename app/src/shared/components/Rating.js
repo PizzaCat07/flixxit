@@ -12,22 +12,69 @@ const Rating = () => {
   const [thumb, setThumb] = useState("none");
   const param = useParams();
   const id = param.id;
-  console.log(thumb, upCount, downCount);
 
   useEffect(() => {
     getRatings(id, setUpCount, setDownCount, setThumb);
   }, []);
 
+  const thumbUpHandler = () => {
+    if (thumb == "up") {
+      setThumb("none");
+      setUpCount(upCount - 1);
+    }
+    if (thumb == "down") {
+      setThumb("up");
+      setUpCount(upCount + 1);
+      setDownCount(downCount - 1);
+    }
+    if (thumb == "none") {
+      setThumb("up");
+      setUpCount(upCount + 1);
+    }
+  };
+
+  const thumbDownHandler = () => {
+    if (thumb == "up") {
+      setThumb("down");
+      setDownCount(downCount + 1);
+      setUpCount(upCount - 1);
+    }
+    if (thumb == "down") {
+      setThumb("none");
+      setDownCount(downCount - 1);
+    }
+    if (thumb == "none") {
+      setThumb("down");
+      setDownCount(downCount + 1);
+    }
+  };
+
   return (
     <>
       <div className="ratingContainer">
         <div className="thumbContainer">
-          <ThumbUpOffAltIcon />
-          <div>{upCount}</div>
+          {thumb == "down" || thumb == "none" ? (
+            <div onClick={() => thumbUpHandler()}>
+              <ThumbUpOffAltIcon />
+            </div>
+          ) : (
+            <div onClick={() => thumbUpHandler()}>
+              <ThumbUpIcon />
+            </div>
+          )}
+          <div className="countContainer">{upCount}</div>
         </div>
         <div className="thumbContainer">
-          <ThumbDownOffAltIcon />
-          <div>{downCount}</div>
+          {thumb == "up" || thumb == "none" ? (
+            <div onClick={() => thumbDownHandler()}>
+              <ThumbDownOffAltIcon />
+            </div>
+          ) : (
+            <div onClick={() => thumbDownHandler()}>
+              <ThumbDownIcon />
+            </div>
+          )}
+          <div className="countContainer">{downCount}</div>
         </div>
       </div>
     </>

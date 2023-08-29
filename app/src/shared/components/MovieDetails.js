@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { addToWatchList } from "../functions/watchList";
+import Rating from "./Rating";
 
 const MovieDetails = ({ details }) => {
   console.log("movieDetails:", details);
@@ -27,13 +28,14 @@ const MovieDetails = ({ details }) => {
           return <li>{x.name}</li>;
         })}
       </ul>
-      <Button
-        onClick={() => {
-          addToWatchList(details, "movie");
-        }}
-      >
-        Add to watchlist
-      </Button>
+      <div className="interactContainer">
+        <div>
+          <Button onClick={() => addToWatchList(details, "tv")}>
+            Add to watchlist
+          </Button>
+          <Rating />
+        </div>
+      </div>
     </>
   );
 };
