@@ -6,6 +6,7 @@ import {
   getFilteredDocuments,
   insertDocument,
   updateRating,
+  addRating,
 } from "../../utilities/database.js";
 import { ObjectId, MongoClient } from "mongodb";
 
@@ -22,7 +23,8 @@ ratingRouter.get("/rating", (req, res) => {
       insertDocument("rating", {
         id: id,
         rating: [],
-        count: 0,
+        downCount: 0,
+        upCount: 0,
       }).then((x) => {
         getFilteredDocuments("rating", { id }).then((x) => {
           res.send(x);
@@ -35,12 +37,29 @@ ratingRouter.get("/rating", (req, res) => {
 ratingRouter.patch("/rating", (req, res) => {
   const id = req.headers.id;
   const newData = req.body;
+  const email = newData.rating.email;
 
-  updateRating("rating", id, newData).then((x) => {
+  getFilteredDocuments("rating", {
+    $and: [{ id }, { "rating.email": email }],
+  }).then((x) => {
+    if (x.length > 0) {
+      console.log("update");
+      updateRating("rating", id, newData).then((x) => {
+        res.send(x);
+      });
+    } else {
+      console.log("add");
+      addRating("rating", id, newData).then((x) => {
+        res.send(x);
+      });
+    }
+  });
+
+  /* addRating("rating", id, newData).then((x) => {
     getFilteredDocuments("rating", { id }).then((x) => {
       res.send(x);
     });
-  });
+  }); */
 });
 
 export default ratingRouter;

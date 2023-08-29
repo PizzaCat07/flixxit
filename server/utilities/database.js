@@ -83,11 +83,31 @@ export function updateRating(collectionName, id, newValues) {
     .connect()
     .then((connection) => {
       const db = connection.db(process.env.DEFAULT_DATABASE);
+      console.log(newValues.rating.email);
+      return db.collection(collectionName).updateOne(
+        { id, "rating.email": newValues.rating.email },
+        {
+          $set: {
+            "rating.$.vote": newValues.rating.vote,
+            upCount: newValues.upCount,
+            downCount: newValues.downCount,
+          },
+        }
+      );
+    });
+}
+
+export function addRating(collectionName, id, newValues) {
+  return getClient()
+    .connect()
+    .then((connection) => {
+      const db = connection.db(process.env.DEFAULT_DATABASE);
       return db.collection(collectionName).updateOne(
         { id },
         {
           $push: { rating: newValues.rating },
-          $set: { count: newValues.count },
+          $set: { upCount: newValues.upCount },
+          $set: { downCount: newValues.downCount },
         }
       );
     });
