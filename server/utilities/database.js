@@ -73,7 +73,7 @@ export function documentExists(collectionName, query) {
     .connect()
     .then((connection) => {
       const db = connection.db(process.env.DEFAULT_DATABASE);
-      console.log(query);
+
       return db.collection(collectionName).countDocuments(query);
     });
 }
@@ -83,7 +83,7 @@ export function updateRating(collectionName, id, newValues) {
     .connect()
     .then((connection) => {
       const db = connection.db(process.env.DEFAULT_DATABASE);
-      console.log(newValues.rating.email);
+
       return db.collection(collectionName).updateOne(
         { id, "rating.email": newValues.rating.email },
         {

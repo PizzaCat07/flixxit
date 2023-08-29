@@ -3,13 +3,14 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import { getRatings } from "../functions/rating";
+import { getRatings, updateRating } from "../functions/rating";
 import { useParams } from "react-router-dom";
 
 const Rating = () => {
   const [upCount, setUpCount] = useState(0);
   const [downCount, setDownCount] = useState(0);
   const [thumb, setThumb] = useState("none");
+  const [update, setUpdate] = useState(false);
   const param = useParams();
   const id = param.id;
 
@@ -31,6 +32,7 @@ const Rating = () => {
       setThumb("up");
       setUpCount(upCount + 1);
     }
+    updateRating(id, thumb, upCount, downCount);
   };
 
   const thumbDownHandler = () => {
@@ -47,6 +49,7 @@ const Rating = () => {
       setThumb("down");
       setDownCount(downCount + 1);
     }
+    updateRating(id, thumb, upCount, downCount);
   };
 
   return (

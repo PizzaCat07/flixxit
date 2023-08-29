@@ -22,4 +22,31 @@ const getRatings = (id, setUpCount, setDownCount, setThumb) => {
     });
 };
 
-export { getRatings };
+const updateRating = (id, vote, upCount, downCount) => {
+  const email = localStorage.getItem("email");
+  const bodyObj = {
+    rating: {
+      email: email,
+      vote: vote,
+    },
+    upCount,
+    downCount,
+  };
+
+  fetch(url, {
+    method: "PATCH",
+    headers: {
+      email: email,
+      token: localStorage.getItem("userToken"),
+      id: id,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bodyObj),
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+    });
+};
+
+export { getRatings, updateRating };
