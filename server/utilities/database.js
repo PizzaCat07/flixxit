@@ -77,3 +77,18 @@ export function documentExists(collectionName, query) {
       return db.collection(collectionName).countDocuments(query);
     });
 }
+
+export function updateRating(collectionName, id, newValues) {
+  return getClient()
+    .connect()
+    .then((connection) => {
+      const db = connection.db(process.env.DEFAULT_DATABASE);
+      return db.collection(collectionName).updateOne(
+        { id },
+        {
+          $push: { rating: newValues.rating },
+          $set: { count: newValues.count },
+        }
+      );
+    });
+}

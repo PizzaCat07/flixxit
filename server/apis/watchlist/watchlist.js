@@ -6,14 +6,9 @@ import {
   getFilteredDocuments,
   insertDocument,
 } from "../../utilities/database.js";
-import { ObjectId, MongoClient } from "mongodb";
-import { header } from "express-validator";
-import jwt from "jsonwebtoken";
+import { MongoClient } from "mongodb";
 
 const watchListRouter = Router();
-function getClient() {
-  return new MongoClient(process.env.CONNECTION_STRING);
-}
 
 watchListRouter.get("/watchlist", (req, res) => {
   const email = req.headers.email;
@@ -28,7 +23,6 @@ watchListRouter.post("/watchList", (req, res) => {
   let details = req.body;
   const id = details.details.id;
   const email = details.email;
-  console.log(id, email);
 
   documentExists("watchList", {
     $and: [{ "details.details.id": id }, { "details.email": email }],

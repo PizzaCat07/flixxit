@@ -6,6 +6,8 @@ import { getAllDocuments } from "./utilities/database.js";
 import userRouter from "./apis/users/users.js";
 import watchListRouter from "./apis/watchlist/watchlist.js";
 import { authenticate } from "./utilities/middlewares.js";
+import ratingRouter from "./apis/rating/rating.js";
+import recentWatchedRouter from "./apis/recentWatched/recentWatched.js";
 
 dotEnv.config();
 
@@ -16,7 +18,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", userRouter);
-app.use("/", authenticate, watchListRouter);
+app.use("/", /* authenticate, */ watchListRouter);
+app.use("/", /* authenticate, */ ratingRouter);
+app.use("/", /* authenticate, */ recentWatchedRouter);
 
 app.listen(PORT, (error) => {
   if (!error)
