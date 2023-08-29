@@ -16,7 +16,9 @@ const getRatings = (id, setUpCount, setDownCount, setThumb) => {
       const vote = results.rating.find((el) => el.email == email);
       setDownCount(results.downCount);
       setUpCount(results.upCount);
-      setThumb(vote.vote);
+      if (vote) {
+        setThumb(vote.vote);
+      }
     });
 };
 
