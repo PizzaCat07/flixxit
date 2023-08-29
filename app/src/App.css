@@ -111,7 +111,9 @@ html, body,#root, .app, #app>div {
 
 .thumbContainer{
   padding-top: 4px;
-  padding-inline: 5px;
+  padding-inline: 7px;
+  display: flex; 
+  justify-content: center;
 }
 
 
