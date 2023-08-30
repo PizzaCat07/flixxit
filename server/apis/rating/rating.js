@@ -15,7 +15,7 @@ const ratingRouter = Router();
 ratingRouter.get("/rating", (req, res) => {
   const id = req.headers.id;
   const email = req.headers.email;
-  console.log("get rating");
+
   getFilteredDocuments("rating", { id }).then((x) => {
     if (x.length > 0) {
       res.send(x);
