@@ -48,11 +48,9 @@ const Title = () => {
 
   useEffect(() => {
     if (type == "movie") {
-      console.log("movie", id);
       getMovieDetails(id, setDetails);
     }
     if (type == "tv") {
-      console.log("tv", id);
       getTvDetails(id, setDetails);
     }
   }, [id]);

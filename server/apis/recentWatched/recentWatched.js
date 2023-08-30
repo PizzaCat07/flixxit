@@ -21,13 +21,14 @@ recentWatchedRouter.get("/profile", (req, res) => {
 recentWatchedRouter.post("/profile", (req, res) => {
   const id = req.headers.id;
   const email = req.headers.email;
-  const { type, poster_path, genres } = req.body;
+  const type = req.headers.type;
+  const { poster_path, genre_ids } = req.body;
   const data = {
     id: id,
     email: email,
     type: type,
     poster_path: poster_path,
-    genres: genres,
+    genres: genre_ids,
   };
 
   getFilteredDocuments("recentWatched", {

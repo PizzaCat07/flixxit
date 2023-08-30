@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import { useNavigate } from "react-router-dom";
+import { addToRecentWatched } from "../functions/recentWatched";
 
 const Carousel = ({ title, type, data }) => {
   const navigate = useNavigate();
@@ -14,6 +15,17 @@ const Carousel = ({ title, type, data }) => {
     0: { items: 1 },
     568: { items: 8 },
     1024: { items: 15 },
+  };
+
+  let recentWactchedDetails = {
+    type: type,
+    poster_path: data.poster_path,
+    genres: data.genres,
+  };
+
+  const navigateHandler = (id, type, x) => {
+    navigate(`/title/${type}/${id}`);
+    addToRecentWatched(x, type);
   };
 
   return (
@@ -29,7 +41,7 @@ const Carousel = ({ title, type, data }) => {
             return (
               <div
                 className="item"
-                onClick={() => navigate(`/title/${type}/${x.id}`)}
+                onClick={() => navigateHandler(x.id, type, x)}
                 key={x.id}
               >
                 <img

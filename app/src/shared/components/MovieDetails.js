@@ -4,7 +4,7 @@ import { addToWatchList } from "../functions/watchList";
 import Rating from "./Rating";
 
 const MovieDetails = ({ details }) => {
-  console.log("movieDetails:", details);
+  //console.log("movieDetails:", details);
 
   return (
     <>
