@@ -42,11 +42,7 @@ const updateRating = (id, vote, upCount, downCount) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(bodyObj),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log(data);
-    });
+  });
 };
 
 export { getRatings, updateRating };
