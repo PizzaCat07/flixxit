@@ -17,14 +17,12 @@ const Carousel = ({ title, type, data }) => {
     1024: { items: 15 },
   };
 
-  let recentWactchedDetails = {
-    type: type,
-    poster_path: data.poster_path,
-    genres: data.genres,
-  };
-
-  const navigateHandler = (id, type, x) => {
-    navigate(`/title/${type}/${id}`);
+  const navigateHandler = (id, type, data_type, x) => {
+    if (!type) {
+      navigate(`/title/${data_type}/${id}`);
+    } else {
+      navigate(`/title/${type}/${id}`);
+    }
     addToRecentWatched(x, type);
   };
 
@@ -41,7 +39,7 @@ const Carousel = ({ title, type, data }) => {
             return (
               <div
                 className="item"
-                onClick={() => navigateHandler(x.id, type, x)}
+                onClick={() => navigateHandler(x.id, type, x.type, x)}
                 key={x.id}
               >
                 <img
