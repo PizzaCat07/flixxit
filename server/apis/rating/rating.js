@@ -20,7 +20,7 @@ ratingRouter.get("/rating", (req, res) => {
     if (x.length > 0) {
       res.send(x);
     } else {
-      console.log("add");
+      console.log("add blank");
       insertDocument("rating", {
         id: id,
         rating: [],

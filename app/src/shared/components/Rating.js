@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
@@ -10,13 +10,20 @@ const Rating = () => {
   const [upCount, setUpCount] = useState(0);
   const [downCount, setDownCount] = useState(0);
   const [thumb, setThumb] = useState("none");
-  const [update, setUpdate] = useState(false);
+  //const [update, setUpdate] = useState(false);
+  const update = useRef(0);
   const param = useParams();
   const id = param.id;
+
+  console.log(update);
 
   useEffect(() => {
     getRatings(id, setUpCount, setDownCount, setThumb);
   }, []);
+
+  if (update.current > 0) {
+    updateRating(id, thumb, upCount, downCount);
+  }
 
   const thumbUpHandler = () => {
     if (thumb == "up") {
@@ -32,7 +39,7 @@ const Rating = () => {
       setThumb("up");
       setUpCount(upCount + 1);
     }
-    updateRating(id, thumb, upCount, downCount);
+    update.current = update.current + 1;
   };
 
   const thumbDownHandler = () => {
@@ -49,7 +56,7 @@ const Rating = () => {
       setThumb("down");
       setDownCount(downCount + 1);
     }
-    updateRating(id, thumb, upCount, downCount);
+    update.current = update.current + 1;
   };
 
   return (
