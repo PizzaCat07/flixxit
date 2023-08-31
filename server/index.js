@@ -18,9 +18,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", userRouter);
-app.use("/", /* authenticate, */ watchListRouter);
-app.use("/", /* authenticate, */ ratingRouter);
-app.use("/", /* authenticate, */ recentWatchedRouter);
+app.use("/", authenticate, watchListRouter);
+app.use("/", authenticate, ratingRouter);
+app.use("/", authenticate, recentWatchedRouter);
 
 app.listen(PORT, (error) => {
   if (!error)
