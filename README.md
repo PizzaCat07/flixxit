@@ -13,13 +13,13 @@
 4. Open browser and go to http://localhost:3001/
 
 ### Start back end independently
-
+- Make sure you are running of the master branch
 1. Go to directory where you cloned the Git Repository
 2. Go to driectory \flixxit\server
 3. Type NPM start
 
 ### Start front end independently
-
+- Make sure you are running of the master branch
 1. Go to directory where you cloned the Git Repository
 2. Go to driectory \flixxit\app
 3. Type NPM start
