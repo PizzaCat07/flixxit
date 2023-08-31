@@ -8,6 +8,11 @@ import watchListRouter from "./apis/watchlist/watchlist.js";
 import { authenticate } from "./utilities/middlewares.js";
 import ratingRouter from "./apis/rating/rating.js";
 import recentWatchedRouter from "./apis/recentWatched/recentWatched.js";
+import path from "path";
+import * as url from "url";
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 dotEnv.config();
 
@@ -15,6 +20,8 @@ const app = express();
 const PORT = 3001;
 
 app.use(cors());
+
+app.use(express.static(path.join(__dirname + "public")));
 app.use(express.json());
 
 app.use("/", userRouter);
