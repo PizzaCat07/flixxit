@@ -1,6 +1,6 @@
 # Flixxit
-Capstone project for Knowledge Hut
-App deployed to https://flixxit-server.vercel.app/login
+- Capstone project for Knowledge Hut
+- App deployed to https://flixxit-server.vercel.app/login
 
 ## Instructions to run
 ### Start back end
