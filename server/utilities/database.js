@@ -112,3 +112,25 @@ export function addRating(collectionName, id, newValues) {
       );
     });
 }
+
+export function getGenres(collectionName, query) {
+  return getClient()
+    .connect()
+    .then((connection) => {
+      const db = connection.db(process.env.DEFAULT_DATABASE);
+      return db
+        .collection(collectionName)
+        .aggregate([
+          {
+            $match: { email: query },
+          },
+          {
+            $unwind: "$genres",
+          },
+          {
+            $group: { _id: "$email", GenreArray: { $addToSet: "$genres" } },
+          },
+        ])
+        .toArray();
+    });
+}

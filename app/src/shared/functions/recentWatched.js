@@ -13,6 +13,19 @@ const getRecentWatched = (setState) => {
     });
 };
 
+const getUser = (setState) => {
+  const email = localStorage.getItem("email");
+
+  fetch(url + "/user", {
+    method: "GET",
+    headers: { email: email, token: localStorage.getItem("userToken") },
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      setState(data);
+    });
+};
+
 const addToRecentWatched = (details, type) => {
   const email = localStorage.getItem("email");
   const id = details.id;
@@ -31,4 +44,4 @@ const addToRecentWatched = (details, type) => {
   });
 };
 
-export { getRecentWatched, addToRecentWatched };
+export { getRecentWatched, addToRecentWatched, getUser };

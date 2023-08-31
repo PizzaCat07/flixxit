@@ -13,7 +13,7 @@ const userRouter = Router();
 //test to get all users
 userRouter.get("/", (req, res) => {
   getAllDocuments("users").then((x) => {
-    res.json({ x });
+    res.json(x);
   });
 });
 

@@ -115,6 +115,30 @@ const getTvDetails = async (id, setState) => {
     });
 };
 
+const getSimilarMovie = async (id, setState) => {
+  await fetch(`https://api.themoviedb.org/3/movie/${id}/similar`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      setState(json.results);
+    });
+};
+
+const getSimilarTv = async (id, setState) => {
+  await fetch(`https://api.themoviedb.org/3/tv/${id}/similar`, {
+    headers: {
+      Authorization: process.env.REACT_APP_API_TOKEN,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((json) => {
+      setState(json.results);
+    });
+};
+
 export {
   getPopularMovie,
   getPopularTV,
@@ -125,4 +149,6 @@ export {
   searchTv,
   getMovieDetails,
   getTvDetails,
+  getSimilarMovie,
+  getSimilarTv,
 };

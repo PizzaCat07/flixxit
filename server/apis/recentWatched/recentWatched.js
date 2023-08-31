@@ -5,6 +5,7 @@ import {
   getAllDocuments,
   getFilteredDocuments,
   insertDocument,
+  getGenres,
 } from "../../utilities/database.js";
 import { ObjectId, MongoClient } from "mongodb";
 
@@ -14,6 +15,14 @@ recentWatchedRouter.get("/profile", (req, res) => {
   const email = req.headers.email;
 
   getFilteredDocuments("recentWatched", { email }).then((x) => {
+    res.json(x);
+  });
+});
+
+recentWatchedRouter.get("/profile/user", (req, res) => {
+  const email = req.headers.email;
+
+  getFilteredDocuments("users", { email }).then((x) => {
     res.json(x);
   });
 });
@@ -45,6 +54,14 @@ recentWatchedRouter.post("/profile", (req, res) => {
         });
       });
     }
+  });
+});
+
+recentWatchedRouter.get("/profile/genres", (req, res) => {
+  const email = req.headers.email;
+
+  getGenres("recentWatched", email).then((x) => {
+    res.send(x);
   });
 });
 
