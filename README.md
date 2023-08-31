@@ -42,8 +42,8 @@ Capstone project for Knowledge Hut
   - Any titles you clicked on to navigate to the title page will be automatically added to the recently viewed carousel, this carousel will display the last 10 titles you viewed
   - The movies and tv recommedations are based on the newest movie or tv show in your recently viewed carosel
 
-  ## About us
+  ### About us
   - Generic about us screen with some made up infomation
 
-  ## Logging out
+  ### Logging out
   - Clicking log out will bring you back to the login screen and wipe local storage for tokens and info. 
