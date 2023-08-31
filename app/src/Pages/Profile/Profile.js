@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../../shared/components/Header";
 import Carousel from "../../shared/components/Carousel";
 import {
@@ -12,37 +12,27 @@ const Profile = () => {
   const [user, setUser] = useState([]);
   const [similarMovie, setSimilarMovie] = useState([]);
   const [similarTv, setSimilarTv] = useState([]);
+  const update = useRef(false);
 
   useEffect(() => {
     getRecentWatched(setRecent);
-  }, []);
-
-  useEffect(() => {
     getUser(setUser);
+    update.current = true;
   }, []);
-
-  useEffect(() => {
-    if (randomTvId && randomMovieId) {
-      getSimilarTv(randomTvId.id, setSimilarTv);
-      getSimilarMovie(randomMovieId.id, setSimilarMovie);
-    }
-  }, [recent]);
-
-  function randomIntFromInterval(min, max) {
-    // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
 
   let randomTv = recent.filter((el) => el.type == "tv");
   let randomMovie = recent.filter((el) => el.type == "movie");
 
-  const rndTv = randomIntFromInterval(0, randomTv.length);
-  const rndMovie = randomIntFromInterval(0, randomMovie.length);
+  if (randomTv.length > 0 || randomMovie > 0) {
+    getSimilarTv(randomTv[randomTv.length - 1].id, setSimilarTv);
+    getSimilarMovie(randomMovie[randomMovie.length - 1].id, setSimilarMovie);
+  }
 
-  const randomTvId = randomTv[rndTv];
-  const randomMovieId = randomMovie[rndMovie];
+  if (recent.length > 10) {
+    let newRecent = recent.slice(recent.length - 10, recent.length);
+    setRecent(newRecent);
+  }
 
-  console.log("tv", similarTv.length, "movie", similarMovie.length);
   return (
     <>
       <div id="screenArea">
@@ -50,7 +40,7 @@ const Profile = () => {
           <>
             <h1>Hello {user[0].username}</h1>
             <spam>Current Email: {user[0].email}</spam>
-            <h2>Recently Viewed</h2>
+            <h2 className="category">Recently Viewed</h2>
             <Carousel data={recent} />
           </>
         ) : null}

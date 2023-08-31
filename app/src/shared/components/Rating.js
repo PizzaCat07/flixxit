@@ -16,8 +16,8 @@ const Rating = () => {
   const id = param.id;
 
   useEffect(() => {
-    //getRatings(id, setUpCount, setDownCount, setThumb);
-  }, []);
+    getRatings(id, setUpCount, setDownCount, setThumb);
+  }, [update]);
 
   if (update.current > 0) {
     updateRating(id, thumb, upCount, downCount);
