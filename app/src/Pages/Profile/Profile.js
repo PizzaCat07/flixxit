@@ -38,17 +38,19 @@ const Profile = () => {
       <div id="screenArea">
         {user.length > 0 ? (
           <>
-            <h1>Hello {user[0].username}</h1>
-            <spam>Current Email: {user[0].email}</spam>
-            <h2 className="category">Recently Viewed</h2>
-            <Carousel data={recent} />
+            <div>
+              <h1>Hello {user[0].username}</h1>
+              <spam>Current Email: {user[0].email}</spam>
+              <h2 className="category">Recently Viewed</h2>
+              <Carousel data={recent} />
+            </div>
           </>
         ) : null}
         {similarMovie.length > 0 ? (
           <>
             <Carousel
               data={similarMovie}
-              title={"Movies you may be intrested in"}
+              title={"Movies you may be interested in"}
             />
           </>
         ) : null}
@@ -56,7 +58,7 @@ const Profile = () => {
           <>
             <Carousel
               data={similarTv}
-              title={"TV Shows you may be intrested in"}
+              title={"TV Shows you may be interested in"}
             />
           </>
         ) : null}
