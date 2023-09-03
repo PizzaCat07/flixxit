@@ -7,10 +7,6 @@ import MovieDetails from "../../shared/components/MovieDetails";
 import TvDetails from "../../shared/components/TvDetails";
 import VideoJS from "../../shared/components/VideoJS";
 import videojs from "video.js";
-import Video1 from "../../videos/video1.mov";
-import Video2 from "../../videos/video2.mov";
-import Video3 from "../../videos/video3.mov";
-import Video4 from "../../videos/video4.mov";
 
 const Title = () => {
   const param = useParams();
@@ -24,23 +20,23 @@ const Title = () => {
   }
 
   const rndInt = randomIntFromInterval(1, 4);
-  let randomVideo = Video1;
+  let randomVideo = "/videos/video1.mov";
 
   switch (rndInt) {
     case 1:
-      randomVideo = Video1;
+      randomVideo = "/videos/video1.mov";
       break;
     case 2:
-      randomVideo = Video2;
+      randomVideo = "/videos/video2.mov";
       break;
     case 3:
-      randomVideo = Video3;
+      randomVideo = "/videos/video3.mov";
       break;
     case 4:
-      randomVideo = Video4;
+      randomVideo = "/videos/video4.mov";
       break;
     default:
-      randomVideo = Video1;
+      randomVideo = "/videos/video1.mov";
       break;
   }
 
@@ -56,6 +52,7 @@ const Title = () => {
   }, [id]);
 
   const playerRef = React.useRef(null);
+  console.log(randomVideo);
 
   const videoJsOptions = {
     autoplay: false,

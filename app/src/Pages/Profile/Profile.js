@@ -51,6 +51,7 @@ const Profile = () => {
             <Carousel
               data={similarMovie}
               title={"Movies you may be interested in"}
+              type={"movie"}
             />
           </>
         ) : null}
@@ -59,6 +60,7 @@ const Profile = () => {
             <Carousel
               data={similarTv}
               title={"TV Shows you may be interested in"}
+              type={"tv"}
             />
           </>
         ) : null}
