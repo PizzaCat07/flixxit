@@ -64,8 +64,9 @@ html, body,#root, .app, #app>div {
 }
 
 #screenArea{
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 10%;
+ 
+  width: 80%;
 
 }
 
@@ -75,6 +76,8 @@ html, body,#root, .app, #app>div {
 
 .detailContainer{
   padding-top: 80px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .watchlistContainer{
@@ -120,4 +123,13 @@ html, body,#root, .app, #app>div {
   padding-left:8px;
 }
 
+.poster{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 
+#vid{
+  margin-top: 40px;
+  width: 70%;
+}
