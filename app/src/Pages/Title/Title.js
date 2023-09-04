@@ -96,11 +96,6 @@ const Title = () => {
             ) : null}
           </div>
         </div>
-
-        <Grid container spacing={10}>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={8}></Grid>
-        </Grid>
         <div id="vid">
           <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
         </div>
