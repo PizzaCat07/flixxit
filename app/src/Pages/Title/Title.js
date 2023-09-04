@@ -83,18 +83,23 @@ const Title = () => {
   return (
     <>
       <div id="screenArea" className="detailContainer">
-        <Grid container spacing={10}>
-          <Grid item xs={4}>
-            <img src={imgUrl} className="posterImg" />
-          </Grid>
-          <Grid item xs={8}>
+        <div className="infoContainer">
+          <div className="poster">
+            <img src={imgUrl} />
+          </div>
+          <div className="info">
             {Object.keys(details).length > 0 && type == "movie" ? (
               <MovieDetails details={details} />
             ) : null}
             {Object.keys(details).length > 0 && type == "tv" ? (
               <TvDetails details={details} />
             ) : null}
-          </Grid>
+          </div>
+        </div>
+
+        <Grid container spacing={10}>
+          <Grid item xs={4}></Grid>
+          <Grid item xs={8}></Grid>
         </Grid>
         <div id="vid">
           <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />

@@ -65,7 +65,7 @@ html, body,#root, .app, #app>div {
 
 #screenArea{
   margin-left: 10%;
- 
+  min-width: 1000px;
   width: 80%;
 
 }
@@ -97,7 +97,7 @@ html, body,#root, .app, #app>div {
 
 .posterImg{
   height: auto; 
-  width: auto;  
+  width: 40;  
 }
 
 .ratingContainer{
@@ -124,12 +124,19 @@ html, body,#root, .app, #app>div {
 }
 
 .poster{
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  width: 40%;
+  height: 40%;
 }
 
 #vid{
   margin-top: 40px;
   width: 70%;
+}
+
+.infoContainer{
+  display: flex;
+}
+
+.info{
+  width: 40%;
 }
