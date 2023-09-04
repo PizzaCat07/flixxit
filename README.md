@@ -13,16 +13,21 @@
 4. Open browser and go to http://localhost:3001/
 
 ### Start back end independently
+
 - Make sure you are running from the master branch
+
 1. Go to directory where you cloned the Git Repository
 2. Go to driectory \flixxit\server
 3. Type NPM start
 
 ### Start front end independently
+
 - Make sure you are running from the master branch
+
 1. Go to directory where you cloned the Git Repository
 2. Go to driectory \flixxit\app
-3. Type NPM start
+3. In code editor edit the .env file and change variable REACT_APP_BACKEND_URL = localhost:3001
+4. Type NPM start
 
 ## Site Functionality
 
