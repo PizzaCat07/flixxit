@@ -1,7 +1,7 @@
 # Flixxit
 
 - Capstone project for Knowledge Hut
-- App deployed to https://flixxit-beryl.vercel.app
+- App deployed to flixxit-prod.vercel.app
 
 ## Instructions to run
 
